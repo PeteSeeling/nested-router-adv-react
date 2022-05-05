@@ -138,7 +138,7 @@ function CategoryList() {
         {movieCategories.map(({ category, id }) => {
           return (
             <li key={id}>
-              {/* A nested link that's using the `url` from `useRouteMatch()`  */}
+             
               <Switch>
               <Link to={`${url}/${id}`}>{category}</Link>
               </Switch>
