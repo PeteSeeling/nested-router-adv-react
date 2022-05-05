@@ -1,3 +1,4 @@
+import { Switch } from 'react-router-dom';
 import {
   BrowserRouter as Router,
   Link,
@@ -104,23 +105,28 @@ function MovieList() {
         {category.movies.map((movie) => {
           return (
             <li key={movie.id}>
+              <Switch>
+              <CategoryList>
               <Link to={`${url}/${movie.id}`}>{movie.title}</Link>
+              </CategoryList>
+              </Switch>
             </li>
           );
         })}
       </ul>
 
       <hr />
-
+        <Switch>
       <Route path={`${path}/:movieId`}>
         <Movie />
       </Route>
+      </Switch>
     </div>
   );
 }
 
 function CategoryList() {
-  // Custom Hook we get from react router dom for nested routing
+  // Custom Hook we get from react router dom for nesed routing
   const { url, path } = useRouteMatch();
   console.log('url in CategoryList', url); // 💡 Use url for nested links
   console.log('path in CategoryList', path); // 💡 Use path for nested routes
@@ -133,7 +139,10 @@ function CategoryList() {
           return (
             <li key={id}>
               {/* A nested link that's using the `url` from `useRouteMatch()`  */}
+              <Switch>
               <Link to={`${url}/${id}`}>{category}</Link>
+              </Switch>
+           
             </li>
           );
         })}
